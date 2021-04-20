@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: #333;
+    background: ${(props) => props.theme.colors.gray800};
   }
 `;
 
