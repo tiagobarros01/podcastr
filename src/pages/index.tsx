@@ -9,7 +9,13 @@ import { convertDurationToTimeString } from '../utils/convertDurationToTimeStrin
 interface Episode {
   id: string;
   title: string;
+  thumbnail: string;
   members: string;
+  publishedAt: string;
+  duration: string;
+  durationAsString: string;
+  description: string;
+  url: string;
 }
 interface HomeProps {
   episodes: Episode[];
