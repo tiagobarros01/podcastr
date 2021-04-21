@@ -70,7 +70,48 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
           )}
         </ul>
       </LatestEpisodes>
-      <AllEpisodes />
+      <AllEpisodes>
+        <h2>All episodes</h2>
+
+        <table cellSpacing={0}>
+          <thead>
+            <th />
+            <th>Podcast</th>
+            <th>members</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th />
+          </thead>
+          <tbody>
+            {allEpisodes.map(({
+              id, thumbnail, title, durationAsString, members, publishedAt,
+            }) => (
+              <tr key={id}>
+                <td style={{ width: 72 }}>
+                  <Image
+                    width={120}
+                    height={120}
+                    src={thumbnail}
+                    alt={title}
+                    objectFit="cover"
+                  />
+                </td>
+                <td>
+                  <a href="#">{title}</a>
+                </td>
+                <td>{members}</td>
+                <td style={{ width: 100 }}>{publishedAt}</td>
+                <td>{durationAsString}</td>
+                <td>
+                  <button type="button">
+                    <img src="/play-green.svg" alt="Play episode" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </AllEpisodes>
     </HomePage>
   );
 }
