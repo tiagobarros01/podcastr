@@ -1,9 +1,17 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import React from 'react';
 
 import { api } from '../services/api';
+import {
+  AllEpisodes,
+  HomePage,
+  LatestEpisodes,
+  EpisodeDetails,
+} from '../styles/pages/home';
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 
 interface Episode {
@@ -18,15 +26,51 @@ interface Episode {
   url: string;
 }
 interface HomeProps {
-  episodes: Episode[];
+  latestEpisodes: Episode[];
+  allEpisodes: Episode[];
 }
 
-export default function Home({ episodes }: HomeProps) {
+export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
   return (
-    <div>
-      <h1>INdex</h1>
-      <p>{JSON.stringify(episodes)}</p>
-    </div>
+    <HomePage>
+      <LatestEpisodes>
+        <h2>Last releases</h2>
+
+        <ul>
+          {latestEpisodes.map(
+            ({
+              id,
+              title,
+              thumbnail,
+              members,
+              publishedAt,
+              durationAsString,
+            }) => (
+              <li key={id}>
+                <Image
+                  width={192}
+                  height={192}
+                  src={thumbnail}
+                  alt={title}
+                />
+
+                <EpisodeDetails>
+                  <a href="#">{title}</a>
+                  <p>{members}</p>
+                  <span>{publishedAt}</span>
+                  <span>{durationAsString}</span>
+                </EpisodeDetails>
+
+                <button type="button">
+                  <img src="/play-green.svg" alt="Play episode" />
+                </button>
+              </li>
+            ),
+          )}
+        </ul>
+      </LatestEpisodes>
+      <AllEpisodes />
+    </HomePage>
   );
 }
 
@@ -44,16 +88,24 @@ export const getStaticProps: GetStaticProps = async () => {
     title: episode.title,
     thumbnail: episode.thumbnail,
     members: episode.members,
-    publishedAt: format(parseISO(episode.published_at), 'd MMM yy', { locale: ptBR }),
+    publishedAt: format(parseISO(episode.published_at), 'd MMM yy', {
+      locale: ptBR,
+    }),
     duration: Number(episode.file.duration),
-    durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
+    durationAsString: convertDurationToTimeString(
+      Number(episode.file.duration),
+    ),
     description: episode.description,
     url: episode.file.url,
   }));
 
+  const latestEpisodes = episodes.slice(0, 2);
+  const allEpisodes = episodes.slice(2, episodes.length);
+
   return {
     props: {
-      episodes,
+      latestEpisodes,
+      allEpisodes,
     },
     revalidate: 60 * 60 * 8,
   };
