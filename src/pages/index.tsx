@@ -5,8 +5,9 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { PlayerContext } from '../contexts/PlayerContext';
 import { api } from '../services/api';
 import {
   AllEpisodes,
@@ -32,6 +33,8 @@ interface HomeProps {
 }
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
+  const { play } = useContext(PlayerContext);
+
   return (
     <HomePage>
       <LatestEpisodes>
@@ -39,33 +42,26 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
         <ul>
           {latestEpisodes.map(
-            ({
-              id,
-              title,
-              thumbnail,
-              members,
-              publishedAt,
-              durationAsString,
-            }) => (
-              <li key={id}>
+            (episode) => (
+              <li key={episode.id}>
                 <Image
                   width={192}
                   height={192}
-                  src={thumbnail}
-                  alt={title}
+                  src={episode.thumbnail}
+                  alt={episode.title}
                   objectFit="cover"
                 />
 
                 <EpisodeDetails>
-                  <Link href={`/episodes/${id}`}>
-                    <a>{title}</a>
+                  <Link href={`/episodes/${episode.id}`}>
+                    <a>{episode.title}</a>
                   </Link>
-                  <p>{members}</p>
-                  <span>{publishedAt}</span>
-                  <span>{durationAsString}</span>
+                  <p>{episode.members}</p>
+                  <span>{episode.publishedAt}</span>
+                  <span>{episode.durationAsString}</span>
                 </EpisodeDetails>
 
-                <button type="button">
+                <button type="button" onClick={() => play(episode)}>
                   <img src="/play-green.svg" alt="Play episode" />
                 </button>
               </li>

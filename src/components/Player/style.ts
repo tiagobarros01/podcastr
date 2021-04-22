@@ -92,3 +92,7 @@ export const Buttons = styled.div`
     }
   }
 `;
+
+export const CurrentEpisode = styled.div`
+
+`;
