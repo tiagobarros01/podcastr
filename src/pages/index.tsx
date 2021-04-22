@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { api } from '../services/api';
@@ -22,7 +24,6 @@ interface Episode {
   publishedAt: string;
   duration: string;
   durationAsString: string;
-  description: string;
   url: string;
 }
 interface HomeProps {
@@ -56,7 +57,9 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                 />
 
                 <EpisodeDetails>
-                  <a href="#">{title}</a>
+                  <Link href={`/episodes/${id}`}>
+                    <a>{title}</a>
+                  </Link>
                   <p>{members}</p>
                   <span>{publishedAt}</span>
                   <span>{durationAsString}</span>
@@ -75,12 +78,14 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
         <table cellSpacing={0}>
           <thead>
-            <th />
-            <th>Podcast</th>
-            <th>members</th>
-            <th>Date</th>
-            <th>Duration</th>
-            <th />
+            <tr>
+              <th />
+              <th>Podcast</th>
+              <th>members</th>
+              <th>Date</th>
+              <th>Duration</th>
+              <th />
+            </tr>
           </thead>
           <tbody>
             {allEpisodes.map(({
@@ -97,7 +102,9 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   />
                 </td>
                 <td>
-                  <a href="#">{title}</a>
+                  <Link href={`/episodes/${id}`}>
+                    <a>{title}</a>
+                  </Link>
                 </td>
                 <td>{members}</td>
                 <td style={{ width: 100 }}>{publishedAt}</td>
@@ -137,7 +144,6 @@ export const getStaticProps: GetStaticProps = async () => {
     durationAsString: convertDurationToTimeString(
       Number(episode.file.duration),
     ),
-    description: episode.description,
     url: episode.file.url,
   }));
 
