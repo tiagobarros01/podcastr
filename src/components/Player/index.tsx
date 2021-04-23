@@ -25,6 +25,8 @@ export function Player() {
     isPlaying,
     togglePlay,
     setPlayingState,
+    playNext,
+    playPrevious,
   } = useContext(PlayerContext);
 
   useEffect(() => {
@@ -78,7 +80,13 @@ export function Player() {
           <span>00:00</span>
 
           { episode && (
-          <audio src={episode.url} autoPlay ref={audioRef} />
+          <audio
+            src={episode.url}
+            autoPlay
+            ref={audioRef}
+            onPlay={() => setPlayingState(true)}
+            onPause={() => setPlayingState(false)}
+          />
           ) }
 
         </Progress>
@@ -86,7 +94,7 @@ export function Player() {
           <button type="button" disabled={!episode}>
             <img src="/shuffle.svg" alt="shuffle" />
           </button>
-          <button type="button" disabled={!episode}>
+          <button type="button" onClick={playPrevious} disabled={!episode}>
             <img src="/play-previous.svg" alt="previous" />
           </button>
           <button
@@ -94,14 +102,12 @@ export function Player() {
             className="playButton"
             disabled={!episode}
             onClick={togglePlay}
-            onPlay={() => setPlayingState(true)}
-            onPause={() => setPlayingState(false)}
           >
             { isPlaying
               ? <img src="/pause.svg" alt="pause" />
               : <img src="/play.svg" alt="play" /> }
           </button>
-          <button type="button" disabled={!episode}>
+          <button type="button" onClick={playNext} disabled={!episode}>
             <img src="/play-next.svg" alt="next" />
           </button>
           <button type="button" disabled={!episode}>

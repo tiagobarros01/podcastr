@@ -33,7 +33,9 @@ interface HomeProps {
 }
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
-  const { play } = useContext(PlayerContext);
+  const { playList } = useContext(PlayerContext);
+
+  const episodeList = [...latestEpisodes, ...allEpisodes];
 
   return (
     <HomePage>
@@ -42,7 +44,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
 
         <ul>
           {latestEpisodes.map(
-            (episode) => (
+            (episode, index) => (
               <li key={episode.id}>
                 <Image
                   width={192}
@@ -61,7 +63,7 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </EpisodeDetails>
 
-                <button type="button" onClick={() => play(episode)}>
+                <button type="button" onClick={() => playList(episodeList, index)}>
                   <img src="/play-green.svg" alt="Play episode" />
                 </button>
               </li>
@@ -84,29 +86,27 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
             </tr>
           </thead>
           <tbody>
-            {allEpisodes.map(({
-              id, thumbnail, title, durationAsString, members, publishedAt,
-            }) => (
-              <tr key={id}>
+            {allEpisodes.map((episode, index) => (
+              <tr key={episode.id}>
                 <td style={{ width: 72 }}>
                   <Image
                     width={120}
                     height={120}
-                    src={thumbnail}
-                    alt={title}
+                    src={episode.thumbnail}
+                    alt={episode.title}
                     objectFit="cover"
                   />
                 </td>
                 <td>
-                  <Link href={`/episodes/${id}`}>
-                    <a>{title}</a>
+                  <Link href={`/episodes/${episode.id}`}>
+                    <a>{episode.title}</a>
                   </Link>
                 </td>
-                <td>{members}</td>
-                <td style={{ width: 100 }}>{publishedAt}</td>
-                <td>{durationAsString}</td>
+                <td>{episode.members}</td>
+                <td style={{ width: 100 }}>{episode.publishedAt}</td>
+                <td>{episode.durationAsString}</td>
                 <td>
-                  <button type="button">
+                  <button type="button" onClick={() => playList(episodeList, index + latestEpisodes.length)}>
                     <img src="/play-green.svg" alt="Play episode" />
                   </button>
                 </td>
