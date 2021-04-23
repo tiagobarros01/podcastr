@@ -24,6 +24,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     setIsPlaying(!isPlaying);
   }
 
+  function setPlayingState(state: boolean) {
+    setIsPlaying(state);
+  }
+
   return (
     <PlayerContext.Provider value={{
       episodeList,
@@ -31,6 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       play,
       isPlaying,
       togglePlay,
+      setPlayingState,
     }}
     >
       <ThemeProvider theme={light}>

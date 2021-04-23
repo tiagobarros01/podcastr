@@ -24,6 +24,7 @@ export function Player() {
     currentEpisodeIndex,
     isPlaying,
     togglePlay,
+    setPlayingState,
   } = useContext(PlayerContext);
 
   useEffect(() => {
@@ -93,6 +94,8 @@ export function Player() {
             className="playButton"
             disabled={!episode}
             onClick={togglePlay}
+            onPlay={() => setPlayingState(true)}
+            onPause={() => setPlayingState(false)}
           >
             { isPlaying
               ? <img src="/pause.svg" alt="pause" />
