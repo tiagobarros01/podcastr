@@ -68,10 +68,6 @@ export const EmptyPlayer = styled.div`
 
 export const Footer = styled.footer`
   align-self: stretch;
-
-  &.empty {
-    opacity: 0.5;
-  }
 `;
 
 export const Progress = styled.div`
@@ -79,6 +75,10 @@ export const Progress = styled.div`
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
+
+  &.empty {
+    opacity: 0.5;
+  }
 
   span {
     display: inline-block;
@@ -105,6 +105,14 @@ export const Buttons = styled.div`
   margin-top: 2.5rem;
   gap: 1.5rem;
 
+  .isActive {
+    filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+
+    :hover {
+      filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg) !important;
+    }
+  }
+
   button {
     background: transparent;
     border: 0;
@@ -119,6 +127,7 @@ export const Buttons = styled.div`
 
     :disabled {
       cursor: not-allowed;
+      opacity: 0.4;
     }
 
     :hover:not(:disabled) {

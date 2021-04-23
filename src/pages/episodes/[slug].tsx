@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+import { usePlayer } from '../../contexts/PlayerContext';
 import { api } from '../../services/api';
 import { EpisodeContainer, ThumbnailContainer, Description } from '../../styles/pages/episode';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
@@ -26,6 +27,8 @@ interface EpisodeProps {
 }
 
 export default function Episode({ episode }: EpisodeProps) {
+  const { play } = usePlayer();
+
   const {
     title,
     thumbnail,
@@ -44,7 +47,7 @@ export default function Episode({ episode }: EpisodeProps) {
           </button>
         </Link>
         <Image width={700} height={160} src={thumbnail} objectFit="cover" />
-        <button type="button">
+        <button type="button" onClick={() => play(episode)}>
           <img src="/play.svg" alt="Play episode" />
         </button>
       </ThumbnailContainer>
