@@ -2,8 +2,6 @@
   <br>
   <img src="./public/logo.svg"/>
   <br>
-  <br>
-Podcastr
  </h1>
  
 <p align="center">An app for listen technology podcasts</p>
