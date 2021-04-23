@@ -42,6 +42,12 @@ export const LatestEpisodes = styled.section`
 
         transition: filter 200ms;
 
+        outline: 0;
+
+        :focus {
+          border: 2px solid ${(props) => props.theme.colors.gray200};
+        }
+
         img {
           width: 1.5rem;
           height: 1.5rem;
@@ -112,6 +118,12 @@ export const AllEpisodes = styled.section`
         font-size: 0;
 
         transition: filter 200ms;
+
+        outline: 0;
+
+        :focus {
+          border: 2px solid ${(props) => props.theme.colors.gray200};
+        }
 
         img {
           width: 1.25rem;

@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import Image from 'next/image';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import React, { useContext } from 'react';
 
 import { PlayerContext } from '../../contexts/PlayerContext';
@@ -9,7 +12,7 @@ import {
   EmptySlider,
   Buttons,
   Footer,
-  Slider,
+  SliderLine,
   CurrentEpisode,
 } from './style';
 
@@ -30,7 +33,7 @@ export function Player() {
         <CurrentEpisode>
           <Image width={592} height={592} src={episode.thumbnail} objectFit="cover" />
           <strong>{episode.title}</strong>
-          <strong>{episode.members}</strong>
+          <span>{episode.members}</span>
         </CurrentEpisode>
       ) : (
         <EmptyPlayer>
@@ -38,28 +41,41 @@ export function Player() {
         </EmptyPlayer>
       ) }
 
-      <Footer className="empty">
+      <Footer className={!episode ? 'empty' : ''}>
         <Progress>
           <span>00:00</span>
-          <Slider>
-            <EmptySlider />
-          </Slider>
+          <SliderLine>
+            { episode ? (
+              <Slider
+                trackStyle={{ background: '#04d361' }}
+                railStyle={{ background: '#9f75ff' }}
+                handleStyle={{ borderColor: '#04d361', borderWidth: 4 }}
+              />
+            ) : (
+              <EmptySlider />
+            ) }
+          </SliderLine>
           <span>00:00</span>
+
+          { episode && (
+          <audio src={episode.url} autoPlay />
+          ) }
+
         </Progress>
         <Buttons>
-          <button type="button">
+          <button type="button" disabled={!episode}>
             <img src="/shuffle.svg" alt="shuffle" />
           </button>
-          <button type="button">
+          <button type="button" disabled={!episode}>
             <img src="/play-previous.svg" alt="previous" />
           </button>
-          <button type="button" className="playButton">
+          <button type="button" className="playButton" disabled={!episode}>
             <img src="/play.svg" alt="play" />
           </button>
-          <button type="button">
+          <button type="button" disabled={!episode}>
             <img src="/play-next.svg" alt="next" />
           </button>
-          <button type="button">
+          <button type="button" disabled={!episode}>
             <img src="/repeat.svg" alt="repeat" />
           </button>
         </Buttons>

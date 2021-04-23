@@ -26,12 +26,38 @@ export const PlayerContainer = styled.div`
   }
 `;
 
+export const CurrentEpisode = styled.div`
+  text-align: center;
+
+  img {
+    border-radius: 1.5rem;
+  }
+
+  strong {
+    display: block;
+    margin-top: 2rem;
+    font: 600 1.25rem Lexend, sans-serif;
+    line-height: 1.75rem;
+  }
+
+  span {
+    display: block;
+    margin-top: 1rem;
+    opacity: 0.6rem;
+    line-height: 1.5rem;
+  }
+`;
+
 export const EmptyPlayer = styled.div`
   width: 100%;
   height: 20rem;
   border: 1.5px dashed ${(props) => props.theme.colors.purple300};
   border-radius: 1.5rem;
-  background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, transparent 100%);
+  background: linear-gradient(
+    143.8deg,
+    rgba(145, 100, 250, 0.8) 0%,
+    transparent 100%
+  );
 
   padding: 4rem;
   display: flex;
@@ -51,8 +77,8 @@ export const Footer = styled.footer`
 export const Progress = styled.div`
   display: flex;
   align-items: center;
-  gap: .5rem;
-  font-size: .875rem;
+  gap: 0.5rem;
+  font-size: 0.875rem;
 
   span {
     display: inline-block;
@@ -61,7 +87,7 @@ export const Progress = styled.div`
   }
 `;
 
-export const Slider = styled.div`
+export const SliderLine = styled.div`
   flex: 1;
 `;
 
@@ -83,16 +109,31 @@ export const Buttons = styled.div`
     background: transparent;
     border: 0;
     font-size: 0;
+    outline: 0;
+
+    transition: filter 200ms;
+
+    :focus {
+      border: 2px solid ${(props) => props.theme.colors.purple800};
+    }
+
+    :disabled {
+      cursor: not-allowed;
+    }
+
+    :hover:not(:disabled) {
+      filter: brightness(0.75);
+    }
 
     &.playButton {
       width: 4rem;
       height: 4rem;
       border-radius: 1rem;
       background: ${(props) => props.theme.colors.purple400};
+
+      :hover:not(:disabled) {
+        filter: brightness(0.95);
+      }
     }
   }
-`;
-
-export const CurrentEpisode = styled.div`
-
 `;

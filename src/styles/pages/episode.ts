@@ -60,6 +60,8 @@ export const ThumbnailContainer = styled.div`
 
     transition: filter 200ms;
 
+    outline: 0;
+
     :first-child {
       left: 0;
       top: 50%;
