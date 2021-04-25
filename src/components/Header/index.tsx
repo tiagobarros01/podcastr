@@ -16,7 +16,7 @@ const currentDate = format(new Date(), 'EEEEEE,d MMM', {
 export function Header({ toggleTheme }: HeaderProps) {
   return (
     <HeaderContainer>
-      <img src="/logo.svg" alt="logo" />
+      <img src="/logoWhite.svg" alt="logo" />
 
       <p>The best for you hear, always</p>
       <span>{currentDate}</span>

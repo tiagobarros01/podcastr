@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
 
+    transition: background 200ms;
+
     box-sizing: border-box;
 
     ::-webkit-scrollbar {

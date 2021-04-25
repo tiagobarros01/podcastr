@@ -1,18 +1,21 @@
 import React from 'react';
+import { VscColorMode } from 'react-icons/vsc';
+
+import { SwitcherContainer } from './style';
 
 interface SwitchProps {
-  toggleTheme: () => void
+  toggleTheme: () => void;
 }
 
 export function Switcher({ toggleTheme }: SwitchProps) {
   return (
-    <div>
-      <button
+    <SwitcherContainer>
+      <VscColorMode
         type="button"
         onClick={toggleTheme}
-      >
-        BOTAO
-      </button>
-    </div>
+        fontSize={25}
+        cursor="pointer"
+      />
+    </SwitcherContainer>
   );
 }
