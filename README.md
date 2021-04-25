@@ -26,7 +26,6 @@
 3. Run `yarn` to install dependencies<br />
 3. Run `yarn server` to start the JSON-Server<br />
 4. Run `yarn dev` to start the app
-
-
-
+<br>
+<br>
 *This project is being built during the NextLevelWeek #5 🔥👨‍💻*
