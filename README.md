@@ -1,14 +1,16 @@
 <h1 align="center">
   <br>
-  <img src="./public/logo.svg"/>
+  <img src="./public/favicon.png"/>
   <br>
+  <br>
+  PODCASTR
  </h1>
  
 <p align="center">An app for listen technology podcasts</p>
-
-<!-- <p align="center">
-  <img src="public/moveit2.gif"/>
-</p> -->
+ 
+<p align="center">
+  <img src="public/gif.gif"/>
+</p>
 
 ## Features
  - **ReactJs** - A JavaScript library for building user interfaces
@@ -24,7 +26,6 @@
 3. Run `yarn` to install dependencies<br />
 3. Run `yarn server` to start the JSON-Server<br />
 4. Run `yarn dev` to start the app
-
-
-
+<br>
+<br>
 *This project is being built during the NextLevelWeek #5 🔥👨‍💻*
