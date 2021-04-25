@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme.colors.gray50};
+    background: ${(props) => props.theme.colors.secondary};
   }
 
   body, input, textarea, button {

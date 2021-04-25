@@ -1,12 +1,12 @@
 export default {
   title: 'dark',
   colors: {
-    primary: '#FFF',
-    gray50: '#F7F8FA',
-    gray100: '#E6E8EB',
+    primary: '#191622',
+    secondary: '#292533',
+    gray100: '#808080',
     gray200: '#AFB2B1',
-    gray500: '#808080',
-    gray800: '#494D4B',
+    gray500: '#E6E8EB',
+    gray800: '#F7F8FA',
 
     green500: '#04D361',
 
