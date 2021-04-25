@@ -2,11 +2,12 @@
   <br>
   <img src="./public/favicon.png"/>
   <br>
-  <h1 align="center">PODCASTR</h1>
+  <br>
+  PODCASTR
  </h1>
  
 <p align="center">An app for listen technology podcasts</p>
-
+ 
 <p align="center">
   <img src="public/gif.gif"/>
 </p>
