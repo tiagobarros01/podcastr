@@ -14,6 +14,17 @@ export const PlayerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   header {
     display: flex;
     align-items: center;
@@ -29,6 +40,16 @@ export const PlayerContainer = styled.div`
 export const CurrentEpisode = styled.div`
   text-align: center;
 
+  @media (max-width: 1200px) {
+    display: flex;
+    text-align: center;
+
+    img {
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
   img {
     border-radius: 1.5rem;
   }
@@ -38,6 +59,10 @@ export const CurrentEpisode = styled.div`
     margin-top: 2rem;
     font: 600 1.25rem Lexend, sans-serif;
     line-height: 1.75rem;
+
+    @media (max-width: 1200px) {
+      text-align: left;
+    }
   }
 
   span {
@@ -45,6 +70,30 @@ export const CurrentEpisode = styled.div`
     margin-top: 1rem;
     opacity: 0.6rem;
     line-height: 1.5rem;
+
+    @media (max-width: 1200px) {
+      text-align: left;
+      width: 100%;
+    }
+  }
+`;
+
+export const InfoEpisodeContainer = styled.div`
+  @media (max-width: 1200px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    margin-left: 1rem;
+  }
+`;
+
+export const HeaderContainer = styled.div`
+  @media (max-width: 1200px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -68,6 +117,10 @@ export const EmptyPlayer = styled.div`
 
 export const Footer = styled.footer`
   align-self: stretch;
+
+  @media (max-width: 1200px) {
+    align-self: auto;
+  }
 `;
 
 export const Progress = styled.div`
@@ -109,7 +162,8 @@ export const Buttons = styled.div`
     filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
 
     :hover {
-      filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg) !important;
+      filter: brightness(0.6) invert(0.35) sepia(1) saturate(3)
+        hue-rotate(100deg) !important;
     }
   }
 
