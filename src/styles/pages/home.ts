@@ -19,7 +19,7 @@ export const LatestEpisodes = styled.section`
     gap: 1.5rem;
 
     li {
-      background: ${(props) => props.theme.colors.white};
+      background: ${(props) => props.theme.colors.primary};
       border: 1px solid ${(props) => props.theme.colors.gray100};
       padding: 1.25rem;
       border-radius: 1.5rem;
@@ -35,7 +35,7 @@ export const LatestEpisodes = styled.section`
 
         width: 2.5rem;
         height: 2.5rem;
-        background: ${(props) => props.theme.colors.white};
+        background: ${(props) => props.theme.colors.primary};
         border: 1px solid ${(props) => props.theme.colors.gray100};
         border-radius: 0.675rem;
         font-size: 0;
@@ -112,7 +112,7 @@ export const AllEpisodes = styled.section`
       button {
         width: 2rem;
         height: 2rem;
-        background: ${(props) => props.theme.colors.white};
+        background: ${(props) => props.theme.colors.primary};
         border: 1px solid ${(props) => props.theme.colors.gray100};
         border-radius: 0.5rem;
         font-size: 0;
