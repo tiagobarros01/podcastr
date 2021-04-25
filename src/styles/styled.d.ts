@@ -20,8 +20,9 @@ declare module 'styled-components' {
       purple500: string;
       purple800: string;
 
+      brightness: number;
+
       scrollbar: string;
-      scrollbarThumb: string;
     };
   }
 }

@@ -17,7 +17,8 @@ export default {
     purple500: '#8257E5',
     purple800: '#6F48C9',
 
-    scrollbar: '#1c1826',
-    scrollbarThumb: '#292338',
+    brightness: 1.55,
+
+    scrollbar: '#292338',
   },
 };

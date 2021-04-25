@@ -54,7 +54,7 @@ export const LatestEpisodes = styled.section`
         }
 
         :hover {
-          filter: brightness(0.95);
+          filter: brightness(${(props) => props.theme.colors.brightness});
         }
       }
 
@@ -131,7 +131,7 @@ export const AllEpisodes = styled.section`
         }
 
         :hover {
-          filter: brightness(0.95);
+          filter: brightness(${(props) => props.theme.colors.brightness});
         }
       }
     }

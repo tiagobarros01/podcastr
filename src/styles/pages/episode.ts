@@ -80,7 +80,7 @@ export const ThumbnailContainer = styled.div`
     }
 
     :hover {
-      filter: brightness(.9);
+      filter: brightness(${(props) => props.theme.colors.brightness});
     }
   }
 

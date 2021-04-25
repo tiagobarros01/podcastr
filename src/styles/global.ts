@@ -11,12 +11,11 @@ const GlobalStyle = createGlobalStyle`
 
     ::-webkit-scrollbar {
       width: 15px;
-      background: ${(props) => props.theme.colors.scrollbar};
     }
 
     ::-webkit-scrollbar-thumb {
         border-radius: 15px;
-        background: ${(props) => props.theme.colors.scrollbarThumb};
+        background: ${(props) => props.theme.colors.scrollbar};
       }
   }
 
