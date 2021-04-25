@@ -1,7 +1,8 @@
 <h1 align="center">
   <br>
-  <img src="./public/logo.svg"/>
+  <img src="./public/favicon.png"/>
   <br>
+  <h1 align="center">PODCASTR</h1>
  </h1>
  
 <p align="center">An app for listen technology podcasts</p>
