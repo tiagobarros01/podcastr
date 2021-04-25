@@ -2,9 +2,10 @@
 import Image from 'next/image';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import { usePlayer } from '../../contexts/PlayerContext';
+import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import {
   PlayerContainer,
   EmptyPlayer,
@@ -18,6 +19,7 @@ import {
 
 export function Player() {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [progress, setProgress] = useState(0);
 
   const {
     episodeList,
@@ -33,6 +35,7 @@ export function Player() {
     isShuffling,
     toggleShuffle,
     toggleLoop,
+    clearPlayerState,
   } = usePlayer();
 
   useEffect(() => {
@@ -46,6 +49,28 @@ export function Player() {
       audioRef.current.pause();
     }
   }, [isPlaying]);
+
+  function setupProgressLIstener() {
+    audioRef.current.currentTime = 0;
+
+    audioRef.current.addEventListener('timeupdate', () => {
+      setProgress(Math.floor(audioRef.current.currentTime));
+    });
+  }
+
+  function handleSeek(amount: number) {
+    audioRef.current.currentTime = amount;
+
+    setProgress(amount);
+  }
+
+  function handleEpisodeEnded() {
+    if (hasNext) {
+      playNext();
+    } else {
+      clearPlayerState();
+    }
+  }
 
   const episode = episodeList[currentEpisodeIndex];
 
@@ -71,28 +96,33 @@ export function Player() {
 
       <Footer>
         <Progress className={!episode ? 'empty' : ''}>
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(progress)}</span>
           <SliderLine>
             { episode ? (
               <Slider
                 trackStyle={{ background: '#04d361' }}
                 railStyle={{ background: '#9f75ff' }}
                 handleStyle={{ borderColor: '#04d361', borderWidth: 4 }}
+                max={episode.duration}
+                value={progress}
+                onChange={handleSeek}
               />
             ) : (
               <EmptySlider />
             ) }
           </SliderLine>
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
 
           { episode && (
           <audio
             src={episode.url}
             autoPlay
             ref={audioRef}
+            onEnded={handleEpisodeEnded}
             onPlay={() => setPlayingState(true)}
             onPause={() => setPlayingState(false)}
             loop={isLooping}
+            onLoadedMetadata={setupProgressLIstener}
           />
           ) }
 
