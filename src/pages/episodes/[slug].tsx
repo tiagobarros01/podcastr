@@ -17,7 +17,7 @@ interface UnitEpisodeProps {
   thumbnail: string;
   members: string;
   publishedAt: string;
-  duration: string;
+  duration: number;
   durationAsString: string;
   url: string;
   description: string;
