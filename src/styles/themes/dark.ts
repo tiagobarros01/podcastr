@@ -10,6 +10,8 @@ export default {
 
     green500: '#04D361',
 
+    white: '#fff',
+
     purple300: '#9F75FF',
     purple400: '#9164FA',
     purple500: '#8257E5',

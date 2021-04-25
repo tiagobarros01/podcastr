@@ -13,6 +13,8 @@ declare module 'styled-components' {
 
       green500: string;
 
+      white: string;
+
       purple300: string;
       purple400: string;
       purple500: string;

@@ -7,7 +7,7 @@ export const PlayerContainer = styled.div`
   padding: 3rem 4rem;
 
   background: ${(props) => props.theme.colors.purple500};
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.white};
 
   display: flex;
   flex-direction: column;
