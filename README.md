@@ -2,8 +2,6 @@
   <br>
   <img src="./public/logo.svg"/>
   <br>
-  <br>
-Podcastr
  </h1>
  
 <p align="center">An app for listen technology podcasts</p>
@@ -17,7 +15,7 @@ Podcastr
  - **NextJS** - The React Framework for Production
  - **Typescript** - A superset of Javascript
  - **Styled-components** - A lib of styles for React
- - I also used Eslint & Eslint-plugin-import-helpers in development
+ - _I also used Eslint & Eslint-plugin-import-helpers in development_
 
 ## Getting started
 
