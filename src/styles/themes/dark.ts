@@ -2,11 +2,11 @@ export default {
   title: 'dark',
   colors: {
     primary: '#191622',
-    secondary: '#292533',
-    gray100: '#808080',
+    secondary: '#0f0d14',
+    gray100: '#312b40',
     gray200: '#AFB2B1',
     gray500: '#E6E8EB',
-    gray800: '#F7F8FA',
+    gray800: '#e3e3e3',
 
     green500: '#04D361',
 
@@ -16,5 +16,8 @@ export default {
     purple400: '#9164FA',
     purple500: '#8257E5',
     purple800: '#6F48C9',
+
+    scrollbar: '#1c1826',
+    scrollbarThumb: '#292338',
   },
 };

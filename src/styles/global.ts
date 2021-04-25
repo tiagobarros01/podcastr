@@ -6,6 +6,16 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
 
     box-sizing: border-box;
+
+    ::-webkit-scrollbar {
+      width: 15px;
+      background: ${(props) => props.theme.colors.scrollbar};
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 15px;
+        background: ${(props) => props.theme.colors.scrollbarThumb};
+      }
   }
 
   @media (max-width: 1080px) {
