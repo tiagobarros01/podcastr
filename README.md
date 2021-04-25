@@ -6,9 +6,9 @@
  
 <p align="center">An app for listen technology podcasts</p>
 
-<!-- <p align="center">
-  <img src="public/moveit2.gif"/>
-</p> -->
+<p align="center">
+  <img src="public/gif.gif"/>
+</p>
 
 ## Features
  - **ReactJs** - A JavaScript library for building user interfaces
